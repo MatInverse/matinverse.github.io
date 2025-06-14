@@ -1,0 +1,7 @@
+/* Allow long signatures to wrap or scroll horizontally */
+.sig {
+  white-space: normal;
+  overflow-x: auto;
+  word-break: break-word;
+}
+
