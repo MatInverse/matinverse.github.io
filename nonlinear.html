@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Nonlinear Thermal Transport &#8212; MatInverse 0.0.1 documentation</title>
+    <title>Thermal Radiation &#8212; MatInverse 0.0.1 documentation</title>
   
   
   
@@ -44,7 +44,6 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'nonlinear';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -143,7 +142,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2Dmetamaterial.html">Thermal metamaterial</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Nonlinear Thermal Transport</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Thermal Radiation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API</span></p>
 <ul class="nav bd-sidenav">
@@ -288,7 +287,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Nonlinear Thermal Transport</h1>
+    <h1>Thermal Radiation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -302,103 +301,66 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="nonlinear-thermal-transport">
-<h1>Nonlinear Thermal Transport<a class="headerlink" href="#nonlinear-thermal-transport" title="Permalink to this heading">#</a></h1>
-<p>In this example, we consider a material with the temperature-dependent thermal conductivity:</p>
-<div class="math notranslate nohighlight">
-\[\kappa(T) = \kappa_A + \frac{\kappa_A - \kappa_B}{1+e^{\alpha \left(T-T_c \right)}},\]</div>
-<p>where <span class="math notranslate nohighlight">\(\kappa_A\)</span> and <span class="math notranslate nohighlight">\(\kappa_B\)</span> are the low- and high-temperature limits, respectively, and <span class="math notranslate nohighlight">\(T\)</span> is the transition temperature. This sigmoidal form is typical of phase-changing materials (PCMs). We design a material with prescribed cross-plane thermal conductivity. Note that we don’t apply periodic boundary conditions since nonlinearity breaks translational symmetry.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matinverse</span><span class="w"> </span><span class="kn">import</span> <span class="n">Fourier</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matinverse</span><span class="w"> </span><span class="kn">import</span> <span class="n">BoundaryConditions</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matinverse</span><span class="w"> </span><span class="kn">import</span> <span class="n">Geometry2D</span>
+  <section id="thermal-radiation">
+<h1>Thermal Radiation<a class="headerlink" href="#thermal-radiation" title="Permalink to this heading">#</a></h1>
+<p>In this example, we compute the thermal losses to radiation for a porous system</p>
+<a class="reference internal image-reference" href="_images/radiation.png"><img alt="animation" src="_images/radiation.png" style="width: 400px;" /></a>
+<p>The key steps in the code below are:</p>
+<ul class="simple">
+<li><p>The simulation domain is created using a <code class="docutils literal notranslate"><span class="pre">mask</span></code>, which creates the pore. To this end, we first create a <code class="docutils literal notranslate"><span class="pre">Geometry2D</span></code> object from which we obtain the indices of the volumes inside the pore; then, the domain is created by including these indices via a <code class="docutils literal notranslate"><span class="pre">mask</span></code> in a new <code class="docutils literal notranslate"><span class="pre">Geometry2D</span></code> object.</p></li>
+<li><p>Nonlinear transport is obtained by setting <code class="docutils literal notranslate"><span class="pre">mode=nonlinear</span></code> in the <code class="docutils literal notranslate"><span class="pre">Fourier</span></code> object.</p></li>
+<li><p>When creating the <code class="docutils literal notranslate"><span class="pre">BoundaryConditions</span></code> object, we set the <cite>default</cite> flux as given by the Stefan-Boltzmann law, which describes thermal radiation. The default is applied to all boundaries, except for regions where explicit boundary conditions are applied.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matinverse</span><span class="w"> </span><span class="kn">import</span> <span class="n">Geometry2D</span><span class="p">,</span><span class="n">BoundaryConditions</span><span class="p">,</span><span class="n">Fourier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matinverse</span><span class="w"> </span><span class="kn">import</span> <span class="n">Plot2D</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">jax</span><span class="w"> </span><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">jnp</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matinverse.projection</span><span class="w"> </span><span class="kn">import</span> <span class="n">projection</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matinverse.filtering</span><span class="w"> </span><span class="kn">import</span> <span class="n">Conic2D</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matinverse</span><span class="w"> </span><span class="kn">import</span> <span class="n">projection</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matinverse.optimizer</span><span class="w"> </span><span class="kn">import</span> <span class="n">MMA</span><span class="p">,</span> <span class="n">State</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">matinverse</span><span class="w"> </span><span class="kn">import</span> <span class="n">Movie2D</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
 
-<span class="n">L</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">70</span>
-<span class="n">size</span> <span class="o">=</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="n">L</span><span class="p">]</span>
-<span class="n">grid</span> <span class="o">=</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">]</span>
 
-<span class="n">resolution</span> <span class="o">=</span> <span class="n">N</span> <span class="o">/</span> <span class="n">L</span>
-<span class="n">eta</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">L</span>      <span class="o">=</span> <span class="mf">0.1</span>     <span class="c1"># Size of the domain [m]</span>
+<span class="n">T0</span>     <span class="o">=</span> <span class="mi">300</span>     <span class="c1"># Base temperature [K]</span>
+<span class="n">DeltaT</span> <span class="o">=</span> <span class="mi">10</span>      <span class="c1"># Applied temperature [K]</span>
+<span class="n">sigma</span>  <span class="o">=</span> <span class="mf">5.67e-8</span> <span class="c1"># Stefan-Boltzmann constant [W/m^2/K^4]</span>
+<span class="n">kappa</span>  <span class="o">=</span> <span class="mi">100</span>     <span class="c1"># Thermal conductivity [W/m/K]</span>
 
-<span class="n">geo</span> <span class="o">=</span> <span class="n">Geometry2D</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">periodic</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
 
-<span class="n">T1</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">T2</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">size</span> <span class="o">=</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span><span class="n">L</span><span class="p">]</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">]</span>
 
-<span class="n">DeltaT</span> <span class="o">=</span> <span class="n">T2</span> <span class="o">-</span> <span class="n">T1</span>
+<span class="n">geo</span> <span class="o">=</span> <span class="n">Geometry2D</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span><span class="n">size</span><span class="p">)</span>
 
-<span class="n">bcs</span> <span class="o">=</span> <span class="n">BoundaryConditions</span><span class="p">(</span><span class="n">geo</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">centroids</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">&gt;</span><span class="n">L</span><span class="o">/</span><span class="mi">5</span>
 
-<span class="n">bcs</span><span class="o">.</span><span class="n">temperature</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">batch</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">T1</span><span class="p">)</span>
-<span class="n">bcs</span><span class="o">.</span><span class="n">temperature</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>  <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">batch</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">T2</span><span class="p">)</span>
+<span class="n">geo</span> <span class="o">=</span> <span class="n">Geometry2D</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span><span class="n">size</span><span class="p">,</span><span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
 
-<span class="c1"># Add &quot;nonlinear&quot; to take into account temperature-dependent properties</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">Fourier</span><span class="p">(</span><span class="n">geo</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;nonlinear&#39;</span><span class="p">)</span>
+<span class="n">bcs</span> <span class="o">=</span> <span class="n">BoundaryConditions</span><span class="p">(</span><span class="n">geo</span><span class="p">,</span><span class="n">default_flux</span><span class="o">=</span><span class="k">lambda</span> <span class="n">batch</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">Tb</span><span class="p">:</span> <span class="n">sigma</span><span class="o">*</span><span class="p">(</span><span class="n">Tb</span><span class="o">**</span><span class="mi">4</span><span class="o">-</span><span class="n">T0</span><span class="o">**</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">inds_left</span> <span class="o">=</span> <span class="n">bcs</span><span class="o">.</span><span class="n">temperature</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">batch</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">T0</span><span class="o">+</span><span class="n">DeltaT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">inds_right</span> <span class="o">=</span> <span class="n">bcs</span><span class="o">.</span><span class="n">temperature</span><span class="p">(</span><span class="k">lambda</span> <span class="n">p</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>  <span class="n">size</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="k">lambda</span> <span class="n">batch</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">T0</span><span class="o">-</span><span class="n">DeltaT</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="c1"># Given parameters</span>
-<span class="n">TA</span> <span class="o">=</span> <span class="n">T1</span>
-<span class="n">KA</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">TB</span> <span class="o">=</span> <span class="n">T2</span>
-<span class="n">KB</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.01</span>
-<span class="n">T_c</span> <span class="o">=</span> <span class="p">(</span><span class="n">TA</span> <span class="o">+</span> <span class="n">TB</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">TB</span> <span class="o">-</span> <span class="n">TA</span><span class="p">))</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">epsilon</span><span class="p">)</span> <span class="o">/</span> <span class="n">epsilon</span><span class="p">)</span>
+<span class="n">out</span><span class="p">,</span><span class="n">stats</span> <span class="o">=</span> <span class="n">Fourier</span><span class="p">(</span><span class="n">geo</span><span class="p">,</span><span class="n">boundary_conditions</span><span class="o">=</span><span class="n">bcs</span><span class="p">,</span>\
+              <span class="n">thermal_conductivity</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">batch</span><span class="p">,</span> <span class="n">space</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">kappa</span><span class="o">*</span><span class="n">jnp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>\
+              <span class="n">X0</span> <span class="o">=</span> <span class="n">T0</span><span class="o">*</span><span class="n">jnp</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">nDOFs</span><span class="p">),</span>\
+              <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;nonlinear&#39;</span><span class="p">)</span>
 
-<span class="n">R</span> <span class="o">=</span> <span class="n">L</span> <span class="o">/</span> <span class="mi">20</span>
-<span class="n">filtering</span> <span class="o">=</span> <span class="n">Conic2D</span><span class="p">(</span><span class="n">geo</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">transform</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">filtering</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">projection</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+<span class="n">P_left</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;P_boundary&#39;</span><span class="p">][</span><span class="n">inds_left</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">P_right</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;P_boundary&#39;</span><span class="p">][</span><span class="n">inds_right</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">P_loss</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">P_left</span> <span class="o">+</span> <span class="n">P_right</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Input Power: </span><span class="si">{</span><span class="o">-</span><span class="n">P_left</span><span class="si">:</span><span class="s1">.3E</span><span class="si">}</span><span class="s1"> W&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Output Power: </span><span class="si">{</span><span class="n">P_right</span><span class="si">:</span><span class="s1">.3E</span><span class="si">}</span><span class="s1"> W&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Power Loss: </span><span class="si">{</span><span class="n">P_loss</span><span class="si">:</span><span class="s1">.3E</span><span class="si">}</span><span class="s1"> W&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Converged in: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;num_steps&#39;</span><span class="p">]</span><span class="si">}</span><span class="s1"> steps&#39;</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">get_kappa</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">KA</span> <span class="o">+</span> <span class="p">(</span><span class="n">KB</span> <span class="o">-</span> <span class="n">KA</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">jnp</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span> <span class="o">-</span> <span class="n">T_c</span><span class="p">)))</span>
-
-<span class="n">kd</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.25</span><span class="p">])</span>
-
-<span class="nd">@jax</span><span class="o">.</span><span class="n">jit</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">objective</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">transform</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
-
-    <span class="n">thermal_conductivity</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">batch</span><span class="p">,</span> <span class="n">space</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="n">get_kappa</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span> <span class="o">*</span> <span class="n">jnp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">space</span><span class="p">]</span>
-
-    <span class="n">out</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">thermal_conductivity</span><span class="o">=</span><span class="n">thermal_conductivity</span><span class="p">,</span>
-            <span class="n">boundary_conditions</span><span class="o">=</span><span class="n">bcs</span><span class="p">,</span>
-            <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="n">out</span><span class="p">[</span><span class="s1">&#39;projected_rho&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
-
-    <span class="n">kappa</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="s1">&#39;kappa_effective&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">DeltaT</span>
-
-    <span class="n">g</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">kappa</span> <span class="o">-</span> <span class="n">kd</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">g</span><span class="p">,</span> <span class="p">({</span><span class="s1">&#39;kappa&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">kappa</span><span class="p">]},</span> <span class="n">out</span><span class="p">)</span>
-
-<span class="n">state</span> <span class="o">=</span> <span class="n">State</span><span class="p">()</span>
-<span class="n">betas</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">]</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">N</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">beta</span> <span class="ow">in</span> <span class="n">betas</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">beta</span><span class="p">)</span>
-
-    <span class="n">x</span> <span class="o">=</span> <span class="n">MMA</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">objective</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">beta</span><span class="p">),</span>
-            <span class="n">x0</span><span class="o">=</span><span class="n">x</span><span class="p">,</span>
-            <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span>
-            <span class="n">nDOFs</span><span class="o">=</span><span class="n">N</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
-            <span class="n">maxiter</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-
-<span class="n">evolution</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">aux</span><span class="p">[</span><span class="s1">&#39;projected_rho&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">aux</span> <span class="ow">in</span> <span class="n">state</span><span class="o">.</span><span class="n">aux</span><span class="p">])</span>
-
-<span class="n">Movie2D</span><span class="p">(</span><span class="n">evolution</span><span class="p">,</span> <span class="n">geo</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<span class="n">Plot2D</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">],</span><span class="n">geo</span><span class="p">,</span><span class="n">design_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Input<span class="w"> </span>Power:<span class="w"> </span><span class="m">7</span>.721E+02<span class="w"> </span>W
+Output<span class="w"> </span>Power:<span class="w"> </span><span class="m">7</span>.721E+02<span class="w"> </span>W
+Power<span class="w"> </span>Loss:<span class="w"> </span><span class="m">8</span>.629E-02<span class="w"> </span>W
+Converged<span class="w"> </span><span class="k">in</span>:<span class="w"> </span><span class="m">3</span><span class="w"> </span>steps
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/radiation_temperature.png"><img alt="animation" src="_images/radiation_temperature.png" style="width: 400px;" /></a>
 </section>
 
 

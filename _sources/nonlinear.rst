@@ -1,104 +1,74 @@
-Nonlinear Thermal Transport
-============================
+Thermal Radiation
+==================
+
+In this example, we compute the thermal losses to radiation for a porous system
+
+.. image:: /_static/radiation.png
+   :alt: animation
+   :width: 400px
 
 
-In this example, we consider a material with the temperature-dependent thermal conductivity:
 
-.. math::
+The key steps in the code below are:
 
-   \kappa(T) = \kappa_A + \frac{\kappa_A - \kappa_B}{1+e^{\alpha \left(T-T_c \right)}},
+- The simulation domain is created using a ``mask``, which creates the pore. To this end, we first create a ``Geometry2D`` object from which we obtain the indices of the volumes inside the pore; then, the domain is created by including these indices via a ``mask`` in a new ``Geometry2D`` object.
 
-where :math:`\kappa_A` and :math:`\kappa_B` are the low- and high-temperature limits, respectively, and :math:`T` is the transition temperature. This sigmoidal form is typical of phase-changing materials (PCMs). We design a material with prescribed cross-plane thermal conductivity. Note that we don't apply periodic boundary conditions since nonlinearity breaks translational symmetry.
+- Nonlinear transport is obtained by setting ``mode=nonlinear`` in the ``Fourier`` object.
+
+- When creating the ``BoundaryConditions`` object, we set the `default` flux as given by the Stefan-Boltzmann law, which describes thermal radiation. The default is applied to all boundaries, except for regions where explicit boundary conditions are applied.
 
 
 .. code-block:: python
 
-   from matinverse import Fourier
-   from matinverse import BoundaryConditions
-   from matinverse import Geometry2D
-   from jax import numpy as jnp
-   from matinverse.projection import projection
-   from matinverse.filtering import Conic2D
-   from matinverse import projection
-   from matinverse.optimizer import MMA, State
-   from matinverse import Movie2D
-   import jax
+  from matinverse import Geometry2D,BoundaryConditions,Fourier
+  from matinverse import Plot2D
+  from jax import numpy as jnp
 
-   L = 10
-   N = 70
-   size = [L, L]
-   grid = [N, N]
 
-   resolution = N / L
-   eta = 0.5
+  L      = 0.1     # Size of the domain [m]
+  T0     = 300     # Base temperature [K]
+  DeltaT = 10      # Applied temperature [K]
+  sigma  = 5.67e-8 # Stefan-Boltzmann constant [W/m^2/K^4]
+  kappa  = 100     # Thermal conductivity [W/m/K]
 
-   geo = Geometry2D(grid, size, periodic=[False, False]) 
 
-   T1 = 10
-   T2 = 20
+  size = [L,L]
+  N = 100
+  grid = [N,N]
 
-   DeltaT = T2 - T1
+  geo = Geometry2D(grid,size) 
 
-   bcs = BoundaryConditions(geo)
+  mask = jnp.linalg.norm(geo.centroids,axis=1)>L/5
 
-   bcs.temperature(lambda p: jnp.isclose(p[0], -size[0]/2), lambda batch, x, t: T1)
-   bcs.temperature(lambda p: jnp.isclose(p[0],  size[0]/2), lambda batch, x, t: T2)
+  geo = Geometry2D(grid,size,mask=mask) 
 
-   # Add "nonlinear" to take into account temperature-dependent properties
-   f = Fourier(geo, mode='nonlinear')
+  bcs = BoundaryConditions(geo,default_flux=lambda batch, x, t, Tb: sigma*(Tb**4-T0**4))
+  inds_left = bcs.temperature(lambda p: jnp.isclose(p[0], -size[0]/2), lambda batch, x, t: T0+DeltaT/2)
+  inds_right = bcs.temperature(lambda p: jnp.isclose(p[0],  size[0]/2), lambda batch, x, t: T0-DeltaT/2)
 
-   # Given parameters
-   TA = T1      
-   KA = 1    
-   TB = T2      
-   KB = 2
-   epsilon = 0.01  
-   T_c = (TA + TB) / 2
-   a = (2 / (TB - TA)) * jnp.log((1 - epsilon) / epsilon)
+  out,stats = Fourier(geo,boundary_conditions=bcs,\
+                thermal_conductivity = lambda batch, space, temp, t: kappa*jnp.eye(2),\
+                X0 = T0*jnp.ones(geo.nDOFs),\
+                mode='nonlinear')
 
-   R = L / 20
-   filtering = Conic2D(geo, R)
 
-   def transform(x, beta):
-       x = filtering(x)
-       return projection(x, beta)
+  P_left = out['P_boundary'][inds_left].sum()
+  P_right = out['P_boundary'][inds_right].sum()
+  P_loss = -(P_left + P_right)
+  print(f'Input Power: {-P_left:.3E} W')
+  print(f'Output Power: {P_right:.3E} W')
+  print(f'Power Loss: {P_loss:.3E} W')
+  print(f'Converged in: {stats['num_steps']} steps')
 
-   def get_kappa(T):
-       return KA + (KB - KA) / (1 + jnp.exp(-a * (T - T_c)))
+  Plot2D(out['T'],geo,design_mask=mask,cmap='viridis')
 
-   kd = jnp.array([0.25]) 
+.. code-block:: bash
 
-   @jax.jit
-   def objective(x, beta):
-       x = transform(x, beta)
+   Input Power: 7.721E+02 W
+   Output Power: 7.721E+02 W
+   Power Loss: 8.629E-02 W
+   Converged in: 3 steps
 
-       thermal_conductivity = lambda batch, space, temp, t: get_kappa(temp) * jnp.eye(2) * x[space]
-
-       out = f(thermal_conductivity=thermal_conductivity,
-               boundary_conditions=bcs,
-               batch_size=1)
-
-       out['projected_rho'] = x
-
-       kappa = out['kappa_effective'] / DeltaT
-
-       g = jnp.linalg.norm(kappa - kd)
-
-       return g, ({'kappa': [kappa]}, out)
-
-   state = State()
-   betas = [16, 32, 64, 128, 256, 512]
-
-   x = jax.random.uniform(jax.random.PRNGKey(0), N**2)
-   for beta in betas:   
-       print(beta)
-
-       x = MMA(lambda x: objective(x, beta),
-               x0=x,
-               state=state,
-               nDOFs=N**2,
-               maxiter=30)
-
-   evolution = jnp.array([aux['projected_rho'] for aux in state.aux])
-
-   Movie2D(evolution, geo, cmap='binary')
+.. image:: /_static/radiation_temperature.png
+   :alt: animation
+   :width: 400px
