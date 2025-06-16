@@ -27,7 +27,7 @@ MatInverse is a JAX-based GPU-accelerated framework for differentiable multiphys
    :maxdepth: 1
    :caption: Solvers
 
-   fourier
+   heat_conduction
 
 .. toctree::
    :maxdepth: 1
@@ -38,8 +38,13 @@ MatInverse is a JAX-based GPU-accelerated framework for differentiable multiphys
 
 .. toctree::
    :maxdepth: 1
-   :caption: API   
+   :caption: API
 
-   api
-
-
+   api/matinverse.fourier
+   api/matinverse.optimizer
+   api/matinverse.projection
+   api/matinverse.filtering
+   api/matinverse.visualizer
+   api/matinverse.geometry2D
+   api/matinverse.geometry3D
+   api/matinverse.boundary_conditions

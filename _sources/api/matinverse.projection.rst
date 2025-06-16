@@ -1,0 +1,4 @@
+﻿projection
+==========
+
+.. autofunction:: matinverse.projection
