@@ -276,7 +276,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -292,6 +294,19 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.visualizer.Plot3D"><code class="docutils literal notranslate"><span class="pre">Plot3D()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.visualizer.create_squares"><code class="docutils literal notranslate"><span class="pre">create_squares()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.visualizer.movie"><code class="docutils literal notranslate"><span class="pre">movie()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.visualizer.plot2D"><code class="docutils literal notranslate"><span class="pre">plot2D()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.visualizer.plot_boundary"><code class="docutils literal notranslate"><span class="pre">plot_boundary()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.visualizer.plot_solid"><code class="docutils literal notranslate"><span class="pre">plot_solid()</span></code></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -301,8 +316,40 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="visualizer">
-<h1>visualizer<a class="headerlink" href="#visualizer" title="Permalink to this heading">#</a></h1>
+  <section id="module-matinverse.visualizer">
+<span id="visualizer"></span><h1>visualizer<a class="headerlink" href="#module-matinverse.visualizer" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.visualizer.Plot3D">
+<span class="sig-prename descclassname"><span class="pre">matinverse.visualizer.</span></span><span class="sig-name descname"><span class="pre">Plot3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.visualizer.Plot3D" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.visualizer.create_squares">
+<span class="sig-prename descclassname"><span class="pre">matinverse.visualizer.</span></span><span class="sig-name descname"><span class="pre">create_squares</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.visualizer.create_squares" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.visualizer.movie">
+<span class="sig-prename descclassname"><span class="pre">matinverse.visualizer.</span></span><span class="sig-name descname"><span class="pre">movie</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geo</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">argv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.visualizer.movie" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.visualizer.plot2D">
+<span class="sig-prename descclassname"><span class="pre">matinverse.visualizer.</span></span><span class="sig-name descname"><span class="pre">plot2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">geo</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">argv</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.visualizer.plot2D" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot Masked data</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.visualizer.plot_boundary">
+<span class="sig-prename descclassname"><span class="pre">matinverse.visualizer.</span></span><span class="sig-name descname"><span class="pre">plot_boundary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bcs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.visualizer.plot_boundary" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.visualizer.plot_solid">
+<span class="sig-prename descclassname"><span class="pre">matinverse.visualizer.</span></span><span class="sig-name descname"><span class="pre">plot_solid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.visualizer.plot_solid" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot static data</p>
+</dd></dl>
+
 </section>
 
 
@@ -340,6 +387,27 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.visualizer.Plot3D"><code class="docutils literal notranslate"><span class="pre">Plot3D()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.visualizer.create_squares"><code class="docutils literal notranslate"><span class="pre">create_squares()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.visualizer.movie"><code class="docutils literal notranslate"><span class="pre">movie()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.visualizer.plot2D"><code class="docutils literal notranslate"><span class="pre">plot2D()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.visualizer.plot_boundary"><code class="docutils literal notranslate"><span class="pre">plot_boundary()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.visualizer.plot_solid"><code class="docutils literal notranslate"><span class="pre">plot_solid()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

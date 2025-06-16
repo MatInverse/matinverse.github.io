@@ -276,7 +276,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -292,6 +294,20 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.Conic2D"><code class="docutils literal notranslate"><span class="pre">Conic2D()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.Conic3D"><code class="docutils literal notranslate"><span class="pre">Conic3D()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.PartialSpaceTimeConic2D"><code class="docutils literal notranslate"><span class="pre">PartialSpaceTimeConic2D()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.SpaceTimeConic2D"><code class="docutils literal notranslate"><span class="pre">SpaceTimeConic2D()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.TimeConic"><code class="docutils literal notranslate"><span class="pre">TimeConic()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.convolve_periodic"><code class="docutils literal notranslate"><span class="pre">convolve_periodic()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.convolve_shortcut"><code class="docutils literal notranslate"><span class="pre">convolve_shortcut()</span></code></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -301,8 +317,43 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="filtering">
-<h1>filtering<a class="headerlink" href="#filtering" title="Permalink to this heading">#</a></h1>
+  <section id="module-matinverse.filtering">
+<span id="filtering"></span><h1>filtering<a class="headerlink" href="#module-matinverse.filtering" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.filtering.Conic2D">
+<span class="sig-prename descclassname"><span class="pre">matinverse.filtering.</span></span><span class="sig-name descname"><span class="pre">Conic2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_at_border</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.filtering.Conic2D" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.filtering.Conic3D">
+<span class="sig-prename descclassname"><span class="pre">matinverse.filtering.</span></span><span class="sig-name descname"><span class="pre">Conic3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_at_border</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.filtering.Conic3D" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.filtering.PartialSpaceTimeConic2D">
+<span class="sig-prename descclassname"><span class="pre">matinverse.filtering.</span></span><span class="sig-name descname"><span class="pre">PartialSpaceTimeConic2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_background</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spatial_dof</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RT</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.filtering.PartialSpaceTimeConic2D" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.filtering.SpaceTimeConic2D">
+<span class="sig-prename descclassname"><span class="pre">matinverse.filtering.</span></span><span class="sig-name descname"><span class="pre">SpaceTimeConic2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">R</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RT</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.filtering.SpaceTimeConic2D" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.filtering.TimeConic">
+<span class="sig-prename descclassname"><span class="pre">matinverse.filtering.</span></span><span class="sig-name descname"><span class="pre">TimeConic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timestamps</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">RT</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.filtering.TimeConic" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.filtering.convolve_periodic">
+<span class="sig-prename descclassname"><span class="pre">matinverse.filtering.</span></span><span class="sig-name descname"><span class="pre">convolve_periodic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.filtering.convolve_periodic" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.filtering.convolve_shortcut">
+<span class="sig-prename descclassname"><span class="pre">matinverse.filtering.</span></span><span class="sig-name descname"><span class="pre">convolve_shortcut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.filtering.convolve_shortcut" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 </section>
 
 
@@ -340,6 +391,28 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.Conic2D"><code class="docutils literal notranslate"><span class="pre">Conic2D()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.Conic3D"><code class="docutils literal notranslate"><span class="pre">Conic3D()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.PartialSpaceTimeConic2D"><code class="docutils literal notranslate"><span class="pre">PartialSpaceTimeConic2D()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.SpaceTimeConic2D"><code class="docutils literal notranslate"><span class="pre">SpaceTimeConic2D()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.TimeConic"><code class="docutils literal notranslate"><span class="pre">TimeConic()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.convolve_periodic"><code class="docutils literal notranslate"><span class="pre">convolve_periodic()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.filtering.convolve_shortcut"><code class="docutils literal notranslate"><span class="pre">convolve_shortcut()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

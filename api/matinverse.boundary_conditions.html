@@ -275,7 +275,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -291,6 +293,44 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.default_flux"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.default_flux()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.flux"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.flux()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.flux_corr"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.flux_corr</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.flux_funcs"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.flux_funcs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.flux_indices"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.flux_indices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.geo"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.geo</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_flux_sides"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_flux_sides()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_flux_values"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_flux_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_periodic"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_periodic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_robin"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_robin()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_robin_sides"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_robin_sides()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_robin_values"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_robin_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_temperature_sides"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_temperature_sides()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_temperature_values"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_temperature_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.n_bcs"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.n_bcs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.periodic"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.periodic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.periodic_funcs"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.periodic_funcs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.periodic_indices"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.periodic_indices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.remaining"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.remaining</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.robin"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.robin()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.robin_corr"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.robin_corr</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.robin_funcs"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.robin_funcs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.robin_indices"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.robin_indices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.temp_corr"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.temp_corr</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.temp_funcs"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.temp_funcs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.temp_indices"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.temp_indices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.temp_robin_funcs"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.temp_robin_funcs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.temperature"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.temperature()</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -300,8 +340,154 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="boundary-conditions">
-<h1>boundary_conditions<a class="headerlink" href="#boundary-conditions" title="Permalink to this heading">#</a></h1>
+  <section id="module-matinverse.boundary_conditions">
+<span id="boundary-conditions"></span><h1>boundary_conditions<a class="headerlink" href="#module-matinverse.boundary_conditions" title="Permalink to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">matinverse.boundary_conditions.</span></span><span class="sig-name descname"><span class="pre">BoundaryConditions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bcs=1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_flux=&lt;function</span> <span class="pre">BoundaryConditions.&lt;lambda&gt;&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_funcs=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flux_funcs=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_robin_funcs=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robin_funcs=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periodic_funcs=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robin_indices=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_indices=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flux_indices=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flux_corr=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robin_corr=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_corr=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remaining=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periodic_indices=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.default_flux">
+<span class="sig-name descname"><span class="pre">default_flux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.default_flux" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.flux">
+<span class="sig-name descname"><span class="pre">flux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flux_func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.flux" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.flux_corr">
+<span class="sig-name descname"><span class="pre">flux_corr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.flux_corr" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.flux_funcs">
+<span class="sig-name descname"><span class="pre">flux_funcs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.flux_funcs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.flux_indices">
+<span class="sig-name descname"><span class="pre">flux_indices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.flux_indices" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.geo">
+<span class="sig-name descname"><span class="pre">geo</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="matinverse.geometry2D.html#matinverse.geometry2D.Geometry2D" title="matinverse.geometry2D.Geometry2D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Geometry2D</span></code></a> <span class="pre">|</span> <a class="reference internal" href="matinverse.geometry3D.html#matinverse.geometry3D.Geometry3D" title="matinverse.geometry3D.Geometry3D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Geometry3D</span></code></a></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.geo" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.get_flux_sides">
+<span class="sig-name descname"><span class="pre">get_flux_sides</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.get_flux_sides" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.get_flux_values">
+<span class="sig-name descname"><span class="pre">get_flux_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Tb</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.get_flux_values" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.get_periodic">
+<span class="sig-name descname"><span class="pre">get_periodic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.get_periodic" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.get_robin">
+<span class="sig-name descname"><span class="pre">get_robin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.get_robin" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.get_robin_sides">
+<span class="sig-name descname"><span class="pre">get_robin_sides</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.get_robin_sides" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.get_robin_values">
+<span class="sig-name descname"><span class="pre">get_robin_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.get_robin_values" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.get_temperature_sides">
+<span class="sig-name descname"><span class="pre">get_temperature_sides</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.get_temperature_sides" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.get_temperature_values">
+<span class="sig-name descname"><span class="pre">get_temperature_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.get_temperature_values" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.n_bcs">
+<span class="sig-name descname"><span class="pre">n_bcs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.n_bcs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.periodic">
+<span class="sig-name descname"><span class="pre">periodic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">periodic_func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.periodic" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.periodic_funcs">
+<span class="sig-name descname"><span class="pre">periodic_funcs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.periodic_funcs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.periodic_indices">
+<span class="sig-name descname"><span class="pre">periodic_indices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.periodic_indices" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.remaining">
+<span class="sig-name descname"><span class="pre">remaining</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.remaining" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.robin">
+<span class="sig-name descname"><span class="pre">robin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">robin_func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.robin" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.robin_corr">
+<span class="sig-name descname"><span class="pre">robin_corr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.robin_corr" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.robin_funcs">
+<span class="sig-name descname"><span class="pre">robin_funcs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.robin_funcs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.robin_indices">
+<span class="sig-name descname"><span class="pre">robin_indices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.robin_indices" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.temp_corr">
+<span class="sig-name descname"><span class="pre">temp_corr</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.temp_corr" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.temp_funcs">
+<span class="sig-name descname"><span class="pre">temp_funcs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.temp_funcs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.temp_indices">
+<span class="sig-name descname"><span class="pre">temp_indices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.temp_indices" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.temp_robin_funcs">
+<span class="sig-name descname"><span class="pre">temp_robin_funcs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></em><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.temp_robin_funcs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.boundary_conditions.BoundaryConditions.temperature">
+<span class="sig-name descname"><span class="pre">temperature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temp_func</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.boundary_conditions.BoundaryConditions.temperature" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
 
 
@@ -330,6 +516,52 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.default_flux"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.default_flux()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.flux"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.flux()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.flux_corr"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.flux_corr</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.flux_funcs"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.flux_funcs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.flux_indices"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.flux_indices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.geo"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.geo</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_flux_sides"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_flux_sides()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_flux_values"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_flux_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_periodic"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_periodic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_robin"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_robin()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_robin_sides"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_robin_sides()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_robin_values"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_robin_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_temperature_sides"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_temperature_sides()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.get_temperature_values"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.get_temperature_values()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.n_bcs"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.n_bcs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.periodic"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.periodic()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.periodic_funcs"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.periodic_funcs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.periodic_indices"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.periodic_indices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.remaining"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.remaining</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.robin"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.robin()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.robin_corr"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.robin_corr</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.robin_funcs"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.robin_funcs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.robin_indices"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.robin_indices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.temp_corr"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.temp_corr</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.temp_funcs"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.temp_funcs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.temp_indices"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.temp_indices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.temp_robin_funcs"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.temp_robin_funcs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.boundary_conditions.BoundaryConditions.temperature"><code class="docutils literal notranslate"><span class="pre">BoundaryConditions.temperature()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

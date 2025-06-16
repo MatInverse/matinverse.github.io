@@ -276,7 +276,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -292,6 +294,33 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.MMA"><code class="docutils literal notranslate"><span class="pre">MMA()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State"><code class="docutils literal notranslate"><span class="pre">State</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.aux"><code class="docutils literal notranslate"><span class="pre">State.aux</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.constraint"><code class="docutils literal notranslate"><span class="pre">State.constraint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.constraint_aux"><code class="docutils literal notranslate"><span class="pre">State.constraint_aux</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.evolution"><code class="docutils literal notranslate"><span class="pre">State.evolution</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.load"><code class="docutils literal notranslate"><span class="pre">State.load()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.objective_function"><code class="docutils literal notranslate"><span class="pre">State.objective_function</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.save"><code class="docutils literal notranslate"><span class="pre">State.save()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.save_all_aux"><code class="docutils literal notranslate"><span class="pre">State.save_all_aux</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.save_constraint_aux"><code class="docutils literal notranslate"><span class="pre">State.save_constraint_aux</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.save_evolution"><code class="docutils literal notranslate"><span class="pre">State.save_evolution</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.colored"><code class="docutils literal notranslate"><span class="pre">colored()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.enhance_inequality_constraint"><code class="docutils literal notranslate"><span class="pre">enhance_inequality_constraint()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.enhance_objective_function"><code class="docutils literal notranslate"><span class="pre">enhance_objective_function()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.get_logger"><code class="docutils literal notranslate"><span class="pre">get_logger()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.logger"><code class="docutils literal notranslate"><span class="pre">logger()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.value_and_jacrev"><code class="docutils literal notranslate"><span class="pre">value_and_jacrev()</span></code></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -301,8 +330,102 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="optimizer">
-<h1>optimizer<a class="headerlink" href="#optimizer" title="Permalink to this heading">#</a></h1>
+  <section id="module-matinverse.optimizer">
+<span id="optimizer"></span><h1>optimizer<a class="headerlink" href="#module-matinverse.optimizer" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.optimizer.MMA">
+<span class="sig-prename descclassname"><span class="pre">matinverse.optimizer.</span></span><span class="sig-name descname"><span class="pre">MMA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objective</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.optimizer.MMA" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="matinverse.optimizer.State">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">matinverse.optimizer.</span></span><span class="sig-name descname"><span class="pre">State</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objective_function=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_evolution=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_all_aux=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_constraint_aux=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evolution=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aux=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint=&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint_aux=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.optimizer.State" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.optimizer.State.aux">
+<span class="sig-name descname"><span class="pre">aux</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></em><a class="headerlink" href="#matinverse.optimizer.State.aux" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.optimizer.State.constraint">
+<span class="sig-name descname"><span class="pre">constraint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></em><a class="headerlink" href="#matinverse.optimizer.State.constraint" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.optimizer.State.constraint_aux">
+<span class="sig-name descname"><span class="pre">constraint_aux</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code><span class="pre">]</span></em><a class="headerlink" href="#matinverse.optimizer.State.constraint_aux" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.optimizer.State.evolution">
+<span class="sig-name descname"><span class="pre">evolution</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></em><a class="headerlink" href="#matinverse.optimizer.State.evolution" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.optimizer.State.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.optimizer.State.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Load a State object from a msgpack file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.optimizer.State.objective_function">
+<span class="sig-name descname"><span class="pre">objective_function</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></em><a class="headerlink" href="#matinverse.optimizer.State.objective_function" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="matinverse.optimizer.State.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.optimizer.State.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save the current state to a msgpack file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.optimizer.State.save_all_aux">
+<span class="sig-name descname"><span class="pre">save_all_aux</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#matinverse.optimizer.State.save_all_aux" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.optimizer.State.save_constraint_aux">
+<span class="sig-name descname"><span class="pre">save_constraint_aux</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#matinverse.optimizer.State.save_constraint_aux" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="matinverse.optimizer.State.save_evolution">
+<span class="sig-name descname"><span class="pre">save_evolution</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#matinverse.optimizer.State.save_evolution" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.optimizer.colored">
+<span class="sig-prename descclassname"><span class="pre">matinverse.optimizer.</span></span><span class="sig-name descname"><span class="pre">colored</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.optimizer.colored" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.optimizer.enhance_inequality_constraint">
+<span class="sig-prename descclassname"><span class="pre">matinverse.optimizer.</span></span><span class="sig-name descname"><span class="pre">enhance_inequality_constraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func_original</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_last</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.optimizer.enhance_inequality_constraint" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.optimizer.enhance_objective_function">
+<span class="sig-prename descclassname"><span class="pre">matinverse.optimizer.</span></span><span class="sig-name descname"><span class="pre">enhance_objective_function</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">has_inequality</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.optimizer.enhance_objective_function" title="Permalink to this definition">#</a></dt>
+<dd><p>Make func compatible with NlOpt</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.optimizer.get_logger">
+<span class="sig-prename descclassname"><span class="pre">matinverse.optimizer.</span></span><span class="sig-name descname"><span class="pre">get_logger</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.optimizer.get_logger" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.optimizer.logger">
+<span class="sig-prename descclassname"><span class="pre">matinverse.optimizer.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'white'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\n'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.optimizer.logger" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.optimizer.value_and_jacrev">
+<span class="sig-prename descclassname"><span class="pre">matinverse.optimizer.</span></span><span class="sig-name descname"><span class="pre">value_and_jacrev</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.optimizer.value_and_jacrev" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 </section>
 
 
@@ -340,6 +463,41 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.MMA"><code class="docutils literal notranslate"><span class="pre">MMA()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State"><code class="docutils literal notranslate"><span class="pre">State</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.aux"><code class="docutils literal notranslate"><span class="pre">State.aux</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.constraint"><code class="docutils literal notranslate"><span class="pre">State.constraint</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.constraint_aux"><code class="docutils literal notranslate"><span class="pre">State.constraint_aux</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.evolution"><code class="docutils literal notranslate"><span class="pre">State.evolution</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.load"><code class="docutils literal notranslate"><span class="pre">State.load()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.objective_function"><code class="docutils literal notranslate"><span class="pre">State.objective_function</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.save"><code class="docutils literal notranslate"><span class="pre">State.save()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.save_all_aux"><code class="docutils literal notranslate"><span class="pre">State.save_all_aux</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.save_constraint_aux"><code class="docutils literal notranslate"><span class="pre">State.save_constraint_aux</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.State.save_evolution"><code class="docutils literal notranslate"><span class="pre">State.save_evolution</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.colored"><code class="docutils literal notranslate"><span class="pre">colored()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.enhance_inequality_constraint"><code class="docutils literal notranslate"><span class="pre">enhance_inequality_constraint()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.enhance_objective_function"><code class="docutils literal notranslate"><span class="pre">enhance_objective_function()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.get_logger"><code class="docutils literal notranslate"><span class="pre">get_logger()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.logger"><code class="docutils literal notranslate"><span class="pre">logger()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.optimizer.value_and_jacrev"><code class="docutils literal notranslate"><span class="pre">value_and_jacrev()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
