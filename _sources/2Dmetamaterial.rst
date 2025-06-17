@@ -87,7 +87,6 @@ Notes:
     kd         = jnp.array([0.2,0.3,-0.05])
 
     delta = 1e-12
-    alpha = 1e-3
 
     R                  = L/10  
     filtering          = Conic2D(geo,R)
