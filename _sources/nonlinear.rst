@@ -64,9 +64,9 @@ The key steps in the code below are:
 
 .. code-block:: bash
 
-   Input Power: 7.721E+02 W
-   Output Power: 7.721E+02 W
-   Power Loss: 8.629E-02 W
+   Input Power: 7.721E+02 W/m
+   Output Power: 7.721E+02 W/m
+   Power Loss: 8.629E-02 W/m
    Converged in: 3 steps
 
 .. image:: /_static/radiation_temperature.png
