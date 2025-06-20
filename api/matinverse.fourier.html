@@ -44,6 +44,7 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'api/matinverse.fourier';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -268,7 +269,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -284,6 +287,14 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.fourier.Fourier"><code class="docutils literal notranslate"><span class="pre">Fourier()</span></code></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -293,8 +304,75 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="fourier">
-<h1>fourier<a class="headerlink" href="#fourier" title="Permalink to this heading">#</a></h1>
+  <section id="module-matinverse.fourier">
+<span id="fourier"></span><h1>fourier<a class="headerlink" href="#module-matinverse.fourier" title="Permalink to this heading">#</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="matinverse.fourier.Fourier">
+<span class="sig-prename descclassname"><span class="pre">matinverse.fourier.</span></span><span class="sig-name descname"><span class="pre">Fourier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary_conditions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thermal_conductivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heat_capacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conductance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">heat_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'linear'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linear_solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'iterative'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collapse_direct</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compute_side_flux</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1e-09</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">saveat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">NT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#matinverse.fourier.Fourier" title="Permalink to this definition">#</a></dt>
+<dd><p>Differentiable Fourier solver based on the Finite-volume method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>geo</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Geometry2D</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Geometry3D</span></code>]) – The geometry object containing the mesh information.</p></li>
+<li><p><strong>boundary_conditions</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">BoundaryConditions</span></code>) – The boundary conditions object</p></li>
+<li><p><strong>thermal_conductivity</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – <p>A function that takes batch, space (as a function of volume index), temperature and time and returns the thermal conductivity tensor <span class="math notranslate nohighlight">\([\mathrm{W\,m^{-1}\,K^{-1}}]\)</span></p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">thermal_conductivity</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">batch</span><span class="p">,</span> <span class="n">space</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="mf">100.</span><span class="o">*</span><span class="n">jnp</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">geo</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>heat_capacity</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – <p>A function that takes batch, space (as a function of volume index), temperature and time and returns the heat capacity <span class="math notranslate nohighlight">\([\mathrm{J\,m^{-3}\,K^{-1}}]\)</span>.
+Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">heat_capacity</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">batch</span><span class="p">,</span> <span class="n">space</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="mf">1e3</span> 
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>conductance</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – <p>A function that takes the indices of the volumes adjacent to a given side and returns the batched conductance <span class="math notranslate nohighlight">\([\mathrm{W\,m^{-2}\,K^{-1}}]\)</span>. If not provided, it is assumed to be large number so it won’t affect calculation.</p>
+<dl class="simple">
+<dt>Example::</dt><dd><p>conductance = lambda s1,s2: 1e3*jnp.ones(1) #assuming a single batch and uniform conductance</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>heat_source</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Callable</span></code>]) – <p>A function that takes batch, space (as a function of volume index) and time and returns the heat source <span class="math notranslate nohighlight">\([\mathrm{W\,m^{-3}}]\)</span>. If not provided, it is assumed to be zero.</p>
+<dl class="simple">
+<dt>Example::</dt><dd><p>heat_source = lambda b,s,t: 1e5</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>mode</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The mode of the solver. Can be ‘linear’, ‘nonlinear’ or ‘transient’.</p></li>
+<li><p><strong>linear_solver</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – The linear solver to use. Can be ‘iterative’ or ‘direct’. If ‘iterative’, it uses the GMRES method. If ‘direct’, it uses sparse LU factorization.</p></li>
+<li><p><strong>collapse_direct</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, it uses the same assembly matrix for all the batches in the direct solver. It can be used only for direct solvers and if no Robin BCs are used.</p></li>
+<li><p><strong>compute_side_flux</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">array</span></code>) – A jnp.array containing the indices of the sides for which the flux will be computed. If not provided, no internal interfacial flux will be computed.</p></li>
+<li><p><strong>batch_size</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The number of batches to use. If &gt; 1, the solver will be vectorized over the batches.</p></li>
+<li><p><strong>tol</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – The tolerance for the linear solver.</p></li>
+<li><p><strong>maxiter</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The maximum number of iterations for the solver.</p></li>
+<li><p><strong>saveat</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">array</span></code>) – A jnp.array containing the time steps at which the solution will be saved. If not provided, it saves only the final solution.</p></li>
+<li><p><strong>DT</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – The time step for the transient solver.</p></li>
+<li><p><strong>NT</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – The number of time steps for the transient solver.</p></li>
+<li><p><strong>X0</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">array</span></code>) – The initial guess for the temperature. It is expected to be of shape <code class="docutils literal notranslate"><span class="pre">(batch_size,</span> <span class="pre">geo.nDOFs)</span></code>. If <code class="docutils literal notranslate"><span class="pre">batch_size</span> <span class="pre">=</span> <span class="pre">1</span></code> then it can be a 1D array. If not provided, it is assumed to be zero.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>) – A tuple containing the output dictionary and the statistics dictionary. The output dictionary contains the following fields:</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>‘T’: The temperature field of shape <code class="docutils literal notranslate"><span class="pre">(NT,</span> <span class="pre">batch_size,</span> <span class="pre">geo.nDOFs)</span></code>.</p></li>
+<li><p>‘J’: The heat flux field of shape <code class="docutils literal notranslate"><span class="pre">(NT,</span> <span class="pre">batch_size,</span> <span class="pre">geo.nDOFs,</span> <span class="pre">geo.dim)</span></code>.</p></li>
+<li><p>‘kappa’: The thermal conductivity tensor field of shape <code class="docutils literal notranslate"><span class="pre">(NT,</span> <span class="pre">batch_size,</span> <span class="pre">geo.nDOFs,</span> <span class="pre">geo.dim,</span> <span class="pre">geo.dim)</span></code>.</p></li>
+<li><p>‘kappa_effective’: The effective thermal conductivity field of shape <code class="docutils literal notranslate"><span class="pre">(NT,</span> <span class="pre">batch_size,</span> <span class="pre">geo.nDOFs)</span></code>.</p></li>
+<li><p>‘P_boundary’: The boundary flux field of shape <code class="docutils literal notranslate"><span class="pre">(NT,</span> <span class="pre">batch_size,</span> <span class="pre">geo.nBoundarySides)</span></code>.</p></li>
+<li><p>‘P_internal’: The internal flux field of shape <code class="docutils literal notranslate"><span class="pre">(NT,</span> <span class="pre">batch_size,</span> <span class="pre">geo.nSides)</span></code>.</p></li>
+<li><p>‘T_boundary’: The temperature field at the boundaries of shape <code class="docutils literal notranslate"><span class="pre">(NT,</span> <span class="pre">batch_size,</span> <span class="pre">geo.nBoundarySides)</span></code>.</p></li>
+</ul>
+<p>The statistics dictionary contains the following fields:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>‘num_steps’: The number of steps taken by the nonlinear solver.</p></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
 </section>
 
 
@@ -323,6 +401,22 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matinverse.fourier.Fourier"><code class="docutils literal notranslate"><span class="pre">Fourier()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
