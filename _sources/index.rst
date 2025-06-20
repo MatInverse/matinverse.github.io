@@ -2,7 +2,7 @@
 Welcome to MatInverse's documentation!
 =======================================
 
-MatInverse is a JAX-based GPU-accelerated framework for differentiable multiphysics, with application to inverse design and automatic parameter extraction. Currently, we feature a heat conduction solver, with a mechanical solver in development. The framework is designed to be extensible, allowing users to implement their own physics and optimization algorithms. 
+MatInverse is a JAX-based GPU-accelerated framework for differentiable multiphysics using the finite-volume method. Application include inverse design and automatic parameter extraction. Currently, we feature a heat conduction solver, with a mechanical solver in development. The framework is designed to be extensible, allowing users to implement their own physics and optimization algorithms. 
 
 
 
