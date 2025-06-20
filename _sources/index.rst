@@ -41,10 +41,3 @@ MatInverse is a JAX-based GPU-accelerated framework for differentiable multiphys
    :caption: API
 
    api/matinverse.fourier
-   api/matinverse.optimizer
-   api/matinverse.projection
-   api/matinverse.filtering
-   api/matinverse.visualizer
-   api/matinverse.geometry2D
-   api/matinverse.geometry3D
-   api/matinverse.boundary_conditions
