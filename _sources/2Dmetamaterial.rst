@@ -1,5 +1,5 @@
-Thermal metamaterial
-======================
+Thermal metamaterial (2D)
+=========================
 In this example, we design a metamaterial with effective thermal conductivity
 
 .. math::

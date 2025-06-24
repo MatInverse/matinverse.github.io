@@ -34,6 +34,7 @@ MatInverse is a JAX-based GPU-accelerated framework for differentiable multiphys
    :caption: Examples
 
    2Dmetamaterial
+   3Dmetamaterial
    nonlinear
 
 .. toctree::
