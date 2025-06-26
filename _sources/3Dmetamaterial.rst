@@ -11,7 +11,7 @@ In this example, we design a metamaterial with effective thermal conductivity
     \end{bmatrix}
 
 
-We solve the heat conduction for follwing six different directions of the unit sphere, 
+We solve the heat conduction for following six different directions of the unit sphere, 
 
 
 :math:`\hat{\mathbf{n}}_0 = \hat{\mathbf{x}}`, 
