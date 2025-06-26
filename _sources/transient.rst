@@ -16,13 +16,13 @@ In this example, we report simple transient heat conduction in a 2D domain, wher
    grid = [N,N]
 
 
-   geo = Geometry2D(grid,size,domain=lambda p:jnp.linalg.norm(p) > L/4) #
+   geo = Geometry2D(grid,size,domain=lambda p:jnp.linalg.norm(p) > L/4) 
    bcs = BoundaryConditions(geo)
    bcs.temperature(lambda p: jnp.isclose(p[0], -size[0]/2), lambda batch, x, t: 1)
    bcs.temperature(lambda p: jnp.isclose(p[0],  size[0]/2), lambda batch, x, t: 0)
 
 
-   #Minimum Delta X for stability: 
+   #Minimum timestep for stability: 
    DT_max = (L/N/2)**2
 
    N_timesteps = 3000
