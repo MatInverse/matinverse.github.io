@@ -8,13 +8,11 @@ MatInverse is developed by Giuseppe Romano (romanog@mit.edu). Paper coming soon.
 
 .. image:: https://docs.google.com/drawings/d/e/2PACX-1vRknGL9b64-biw__Z6S0PtE2voNBWakZH9OomnKOnyk3dUlqqZSFzJNQYZ7Owk4V-EZfy03G7UD1MFQ/pub?w=1440&h=1080
    :alt: MatInverse
-   :width: 800px
+   :width: 500px
 
 
 
 \*     Under development
-
-\*\*   Planned
 
 
 .. toctree::
